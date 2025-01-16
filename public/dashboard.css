@@ -144,6 +144,7 @@ h2 {
 .modal-content {
   background-color: #fff; /* White background for modal */
   margin: 10% auto; /* Center modal vertically and horizontally */
+  font-size: 16px;
   padding: 20px; /* Add padding inside modal */
   border-radius: 10px; /* Rounded corners */
   width: 80%; /* Modal width */
@@ -181,6 +182,7 @@ h2 {
 .modal input[type="text"] {
   width: calc(100% - 20px); /* Full width minus padding */
   padding: 8px 10px; /* Padding for input */
+  font-size: 16px;
   margin-bottom: 20px; /* Add space below the input */
   border: 1px solid #ccc; /* Light border for input */
   border-radius: 5px; /* Rounded corners */
@@ -223,14 +225,21 @@ h2 {
   display: none; /* Hidden by default */
   background-color: #ffffff; /* White background for mobile menu */
   position: absolute; /* Absolute positioning */
-  bottom: 0; /* Align to the bottom */
-  left: 0; /* Align to the left */
-  right: 0; /* Align to the right */
+  top: 0; /* Align to the top */
+  left: -100%; /* Start off-screen to the left */
+  width: calc(100% - 50px); /* Stop just before the mobile menu icon (adjust 50px as needed) */
+  height: 100%; /* Full height for vertical alignment */
   padding: 10px 20px; /* Add padding */
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Shadow on top */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Shadow on the side */
   text-align: center; /* Center the items */
-  transition: transform 0.3s ease-in-out; /* Smooth transform effect */
-  transform: translateY(100%); /* Initially hidden below the screen */
+  transition: transform 0.3s ease-in-out; /* Smooth slide-in effect */
+  transform: translateX(-100%); /* Initially off-screen to the left */
+  z-index: 1000; /* Ensure it appears above other content */
+}
+
+.mobile-menu.open {
+  display: block; /* Show the menu when active */
+  transform: translateX(0); /* Slide fully into view */
 }
 
 .mobile-menu a {
@@ -244,6 +253,8 @@ h2 {
 .mobile-menu a:hover {
   color: #0056b3; /* Darker blue on hover */
 }
+
+
 
 /* Footer styling */
 footer {

@@ -143,12 +143,20 @@
     <a href="/createFolder" class="button">Create Folder</a>
     <a href="/uploadFile" class="button">Upload File</a>
     <a href="/logout" class="button logout">Logout</a>
+    <a href="/dashboard" class="button logout">Back to Dashboard</a>
   </div>
 
   <div id="popupContainer"></div>
 
   <script>
     // Function to toggle the mobile menu visibility
+    const menu = document.querySelector('.mobile-menu');
+    const menuIcon = document.querySelector('.menu-icon');
+
+    menuIcon.addEventListener('click', () => {
+      menu.classList.toggle('open'); // Toggle the 'open' class
+    });
+
     function toggleMobileMenu() {
       const mobileMenu = document.getElementById('mobileMenu');
       if (mobileMenu.style.display === 'block') {

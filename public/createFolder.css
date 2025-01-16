@@ -1,27 +1,98 @@
 /* Popup Styling */
 
 /* The main container for the popup content */
-.popup-content {
-  position: relative; /* Positions the popup relative to its parent container */
-  background-color: #fefefe; /* Sets the background color to a light neutral shade */
-  margin: 10% auto; /* Centers the popup horizontally and vertically */
-  padding: 20px; /* Adds spacing inside the popup */
-  border: 1px solid #888; /* Adds a light border around the popup */
-  border-radius: 10px; /* Rounds the corners of the popup */
-  width: 40%; /* Sets the popup's width to 40% of the viewport width */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow for depth */
-  text-align: center; /* Centers the text inside the popup */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent grey */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensures it appears on top of other elements */
+  visibility: hidden; /* Initially hidden */
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-/* Styling for the close button inside the popup */
-.popup-content .close {
-  position: absolute; /* Positions the close button relative to the popup */
-  top: 10px; /* Positions it 10px from the top */
-  right: 15px; /* Positions it 15px from the right */
-  color: #aaa; /* Sets the initial color to a muted gray */
-  font-size: 28px; /* Makes the button text large for visibility */
-  font-weight: bold; /* Ensures the button text stands out */
-  cursor: pointer; /* Changes the cursor to a pointer for better UX */
+/* Make popup visible */
+.popup-overlay.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Base styling for the popup container */
+.popup-content {
+  background-color: #fff;
+  width: 90%;
+  max-width: 400px;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  position: relative;
+  animation: slideIn 0.3s ease-out;
+  z-index: 1010; /* Ensure popup is above the overlay */
+  background-color: rgba(236, 250, 236, 0.5); /* Semi-transparent grey */
+}
+
+/* Close button styling */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+/* Popup heading styling */
+.popup-content h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+/* Input field styling */
+.popup-content input[type="text"] {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+/* Warning message styling */
+.popup-content .warning {
+  display: none; /* Hidden by default */
+  color: #e74c3c;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+/* Submit button styling */
+.popup-content button {
+  width: 90%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.popup-content button:hover {
+  background-color: #45a049;
 }
 
 /* Close button hover and focus effects */
@@ -73,4 +144,32 @@ form button:hover {
   display: none; /* Hides the warning message by default */
   margin-top: -10px; /* Pulls the warning closer to the related input */
   margin-bottom: 10px; /* Adds spacing below the warning */
+}
+
+@media (max-width: 600px) {
+  .popup-content {
+    margin: 20% auto;
+    padding: 15px;
+  }
+
+  .popup-content h2 {
+    font-size: 1.2rem;
+  }
+
+  .popup-content input[type="text"],
+  .popup-content button {
+    font-size: 0.9rem;
+  }
+}
+
+/* Animation for popup */
+@keyframes slideIn {
+  from {
+    transform: translateY(-20%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

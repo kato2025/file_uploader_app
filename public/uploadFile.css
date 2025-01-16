@@ -1,25 +1,99 @@
-    /* Popup Styling */
-    .popup-content {
-      position: relative; /* Position relative to enable positioning of close button */
-      background-color: #fefefe; /* Light background color for the popup */
-      margin: 10% auto; /* Center the popup vertically with a 10% margin from the top */
-      padding: 20px; /* Add padding inside the popup for content spacing */
-      border: 1px solid #888; /* Light grey border for the popup */
-      border-radius: 10px; /* Rounded corners for a soft look */
-      width: 40%; /* Set the width of the popup */
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Add shadow to give depth to the popup */
-      text-align: center; /* Center text inside the popup */
-    }
+  /* Popup Styling */
 
-    .popup-content .close {
-      position: absolute; /* Position the close button absolutely within the popup */
-      top: 10px; /* Position the close button 10px from the top */
-      right: 15px; /* Position the close button 15px from the right */
-      color: #aaa; /* Light grey color for the close button */
-      font-size: 28px; /* Larger font size for the close button */
-      font-weight: bold; /* Make the close button bold */
-      cursor: pointer; /* Change the cursor to a pointer on hover */
-    }
+  /* The main container for the popup content */
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent grey */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensures it appears on top of other elements */
+    visibility: hidden; /* Initially hidden */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Make popup visible */
+  .popup-overlay.active {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  /* Base styling for the popup container */
+  .popup-content {
+    background-color: #fff;
+    width: 90%;
+    max-width: 400px;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    position: relative;
+    animation: slideIn 0.3s ease-out;
+    z-index: 1010; /* Ensure popup is above the overlay */
+    background-color: rgba(236, 250, 236, 0.5); /* Semi-transparent grey */
+  }
+
+  /* Close button styling */
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+
+  /* Popup heading styling */
+  .popup-content h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+
+  /* Input field styling */
+  .popup-content input[type="text"] {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+
+  /* Warning message styling */
+  .popup-content .warning {
+    display: none; /* Hidden by default */
+    color: #e74c3c;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+
+  /* Submit button styling */
+  .popup-content button {
+    width: 90%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .popup-content button:hover {
+    background-color: #45a049;
+  }
 
     .popup-content .close:hover,
     .popup-content .close:focus {
@@ -62,4 +136,32 @@
       display: none; /* Initially hide the warning text */
       margin-top: -10px; /* Negative margin to bring the warning text closer to the form */
       margin-bottom: 10px; /* Add space below the warning text */
+    }
+
+    @media (max-width: 600px) {
+      .popup-content {
+        margin: 20% auto;
+        padding: 15px;
+      }
+    
+      .popup-content h2 {
+        font-size: 1.2rem;
+      }
+    
+      .popup-content input[type="text"],
+      .popup-content button {
+        font-size: 0.9rem;
+      }
+    }
+    
+    /* Animation for popup */
+    @keyframes slideIn {
+      from {
+        transform: translateY(-20%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
