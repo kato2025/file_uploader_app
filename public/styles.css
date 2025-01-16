@@ -1,0 +1,186 @@
+/* Root styles for custom properties */
+:root {
+    --bg-color: #f7f9fc;
+    --primary-color: #0078d4;
+    --text-color: #333;
+    --button-bg: var(--primary-color);
+    --button-text: #fff;
+    --folder-bg: #e6f4ff;
+    --folder-border: #0078d4;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* General reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* App header styles */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--primary-color);
+    padding: 1rem;
+    color: var(--button-text);
+  }
+  
+  header .app-icon {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  header button.logout {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  header button.logout:hover {
+    background-color: #005a9e;
+  }
+  
+  /* Upload buttons container */
+  .upload-buttons {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .upload-buttons button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: var(--card-shadow);
+  }
+  
+  .upload-buttons button:hover {
+    background-color: #005a9e;
+  }
+  
+  /* Welcome text */
+  .welcome {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 1.25rem;
+    color: var(--button-text);
+  }
+  
+  /* Folder*/
+  .folder {
+    width: 100px;
+    height: 90px;
+    border-radius: 0 5px 5px 5px;
+    box-shadow: 1px 1px 0 1px #CCCCCC;
+  }
+
+  /* Folder grid */
+  .folder-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .folder-grid .folder {
+    background-color: var(--folder-bg);
+    border: 1px solid var(--folder-border);
+    border-radius: 8px;
+    text-align: center;
+    padding: 1rem;
+    box-shadow: var(--card-shadow);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .folder-grid .folder:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .folder-grid .folder a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+  }
+  
+  /* File table styles */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+  }
+  
+  table th, table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  table th {
+    background-color: var(--folder-border);
+    color: var(--button-text);
+  }
+  
+  table td a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  table td button {
+    background-color: #d9534f;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  table td button:hover {
+    background-color: #c9302c;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .upload-buttons {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  
+    .folder-grid {
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+  
+    table th, table td {
+      font-size: 0.875rem;
+      padding: 0.5rem;
+    }
+  }
+  

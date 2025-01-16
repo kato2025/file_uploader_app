@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Metadata, title, etc -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/createFolder.css">
+  <title>Create Folder</title>
+<!--Script to display uploadFolder popup form-->
+  <script>
+    function validateForm(event) {
+      const folderNameInput = document.getElementById('folderName');
+      const folderWarning = document.getElementById('folderWarning');
+
+      // Check if the folder name is empty
+      if (folderNameInput.value.trim() === "") {
+        folderWarning.style.display = "block"; // Show custom warning in red
+        event.preventDefault(); // Prevent form submission
+      } else {
+        folderWarning.style.display = "none"; // Hide warning if folder name is entered
+      }
+    }
+  </script>
+</head>
+<!-- Create folders -->
+<body>
+  <div class="popup-content">
+    <span class="close" onclick="window.history.back()">&times;</span>
+    <h2>Create a New Folder</h2>
+    <!-- Form to create a new folder -->
+    <form action="/create-folder" method="POST" onsubmit="validateForm(event)">
+      <label for="folderName">Folder Name:</label>
+      <input type="text" name="folderName" id="folderName"/>
+      <!-- Custom warning message in red -->
+      <div id="folderWarning" class="warning">You must first type the folder name.</div> 
+      <button type="submit">Create Folder</button>
+    </form>
+  </div>
+</body>
+</html>

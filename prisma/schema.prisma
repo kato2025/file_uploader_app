@@ -1,0 +1,52 @@
+// Prisma schema for the database
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Database schema
+
+// User model
+model User {
+  id       Int      @id @default(autoincrement())
+  email    String   @unique
+  password String
+  name     String? // Optional, if some users may not have a name yet
+  files    File[]
+  folders  Folder[]
+}
+
+// Folder model
+model Folder {
+  id        Int      @id @default(autoincrement())
+  name      String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  files     File[]
+  createdAt DateTime @default(now())
+}
+
+// File model
+model File {
+  id        Int      @id @default(autoincrement())
+  name      String
+  path      String
+  size      Int
+  folder    Folder   @relation(fields: [folderId], references: [id])
+  folderId  Int
+  createdAt DateTime @default(now())
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    Int?
+}
+
+// Session model
+model Session {
+  id        String   @id @default(cuid()) // Primary key
+  sid       String   @unique // Session ID
+  data      String // Session data
+  expiresAt DateTime // Expiry timestamp
+}

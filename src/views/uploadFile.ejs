@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--Metadata, title, css etc-->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/uploadFile.css">
+  <title>Upload File</title>
+  <!--Supported file types-->
+  <script>
+    function validateForm(event) {
+      const folderSelect = document.getElementById('folderId');
+      const fileInput = document.getElementById('file');
+      const folderWarning = document.getElementById('folderWarning');
+      const fileWarning = document.getElementById('fileWarning');
+      const fileTypeWarning = document.getElementById('fileTypeWarning');
+
+      const allowedExtensions = /\.(jpeg|jpg|png|pdf|docx|xlsx|doc|xls|txt|mp4|ppt|pptx)$/i;
+
+      let formValid = true;
+
+      // Check if folder is selected
+      if (folderSelect.value === "") {
+        folderWarning.style.display = "block"; // Show folder warning
+        formValid = false;
+      } else {
+        folderWarning.style.display = "none"; // Hide folder warning
+      }
+
+      // Check if file is selected
+      if (fileInput.files.length === 0) {
+        fileWarning.style.display = "block"; // Show file warning
+        formValid = false;
+      } else {
+        fileWarning.style.display = "none"; // Hide file warning
+      }
+
+      // Check file type if a file is selected
+      if (fileInput.files.length > 0 && !allowedExtensions.test(fileInput.files[0].name)) {
+        fileTypeWarning.style.display = "block"; // Show file type warning
+        formValid = false;
+      } else {
+        fileTypeWarning.style.display = "none"; // Hide file type warning
+      }
+
+      // If form is not valid, prevent submission
+      if (!formValid) {
+        event.preventDefault(); // Prevent form submission
+      }
+    }
+  </script>
+</head>
+<!--Upload folder form-->
+<body>
+  <div class="popup-content">
+    <span class="close" onclick="window.history.back()">&times;</span>
+    <h2>Upload File</h2>
+    <form action="/upload" method="POST" enctype="multipart/form-data" onsubmit="validateForm(event)">
+      <label for="folderId">Select Folder:</label>
+      <!--Folder dropdown-->
+      <select name="folderId" id="folderId">
+        <option value="">Select a folder</option> <!-- Default value -->
+        <% folders.forEach(folder => { %>
+          <option value="<%= folder.id %>"><%= folder.name %></option>
+        <% }); %>
+      </select>
+      <div id="folderWarning" class="warning">You must first select a folder.</div> <!-- Folder warning -->
+      <!--Choose file-->
+      <label for="file">Select File:</label>
+      <input type="file" name="file" id="file" />
+      <div id="fileWarning" class="warning">You must select a file to upload.</div> <!-- File warning -->
+      <div id="fileTypeWarning" class="warning">
+        Only Word, Excel, PowerPoint, txt, PDF, MP4, and image file types are allowed.
+      </div> <!-- File type warning -->
+      <!--Submit button-->
+      <button type="submit">Upload File</button>
+    </form>
+    <p class="create-new-folder">Have not yet created a folder? <a href="/createFolder">Create new folder</a>.</p>
+  </div>
+</body>
+</html>

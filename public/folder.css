@@ -1,0 +1,246 @@
+/* General Styles */
+/* Base styling for the body: setting a clean, readable font and neutral background */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Header */
+/* Top navigation header: flex layout for alignment, dark background for contrast */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  position: relative; /* Allows child elements like the mobile menu icon to position properly */
+}
+
+/* Logo image dimensions */
+.app-icon {
+  width: 90px;
+  height: 60px;
+  margin-top: -7px;
+  margin-bottom: -17px;
+}
+
+/* Welcome section within the header */
+.welcome {
+  display: flex;
+  align-items: center;
+  flex-direction: column; /* Stacks elements vertically */
+  gap: 5px; /* Adds spacing between elements */
+}
+
+/* Welcome message styling */
+.welcome h3 {
+  margin: 0; /* Removes default margin */
+  font-size: 1.2em; /* Slightly larger font size */
+}
+
+/* Upload buttons container: centered with spacing */
+.upload-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+
+/* Links inside upload buttons: styled for a modern look */
+.upload-buttons a {
+  text-decoration: none;
+  font-size: 20px;
+  text-align: center;
+  color: #FFF; /* White text color */
+}
+
+/* Hover effect for upload button links */
+.upload-buttons a:hover {
+  color: yellow; /* Changes color for emphasis on hover */
+}
+
+/* Mobile menu icon: initially hidden, shown only on smaller screens */
+.mobile-menu-icon {
+  display: none;
+  font-size: 2em;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+/* Heading styles: centered with a primary color */
+h1, h2, h3 {
+  margin: 20px 20px 10px;
+  text-align: center;
+  color: #007bff; /* Primary blue */
+}
+
+/* File grid: responsive layout using CSS grid */
+.file-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* File Card */
+/* Individual file cards: clean design with shadows and hover effect */
+.file-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s; /* Smooth hover animation */
+}
+
+/* Elevate file card slightly on hover */
+.file-card:hover {
+  transform: translateY(-1px);
+}
+
+/* File thumbnail icon: large and prominent */
+.file-thumbnail {
+  font-size: 50px;
+}
+
+/* Shared margins for file name and thumbnail */
+.file-name,
+.file-thumbnail {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: #007bff;
+}
+
+/* File name: styled to handle overflow gracefully */
+.file-name {
+  font-weight: 100;
+  font-size: 1em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+/* File size text: smaller and subtly colored */
+.file-size {
+  font-size: 0.9em;
+  color: #555;
+}
+
+/* Actions */
+/* Container for file action buttons */
+.file-actions {
+  display: flex;
+  justify-content: space-around; /* Even spacing for actions */
+  align-items: center;
+  gap: 5px;
+}
+
+/* Links in file actions: styled as buttons */
+.file-actions a {
+  text-decoration: none;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* Buttons inside file actions */
+.file-actions button {
+  border: none;
+  font-size: 30px;
+  background-color: #FFF;
+}
+
+/* Hover effect for buttons */
+.file-actions button:hover {
+  cursor: pointer;
+}
+
+/* Mobile Menu */
+/* Hidden by default, visible on smaller screens */
+.mobile-menu {
+  display: none;
+  background-color: #ffffff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 20px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: transform 0.3s ease-in-out; /* Smooth slide-in effect */
+  transform: translateY(100%); /* Hidden by default */
+}
+
+/* Mobile menu links */
+.mobile-menu a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+
+/* Hover effect for mobile menu links */
+.mobile-menu a:hover {
+  color: #0056b3; /* Darker blue for emphasis */
+}
+
+/* Footer styling */
+footer {
+  text-align: center; /* Centers the footer text */
+  margin-top: -45px; /* Adjusts the top margin */
+  margin-bottom: 30px; /* Adds space at the bottom */
+}
+
+/* Mobile Styles */
+/* Styles for smaller screens (max-width: 768px) */
+@media (max-width: 768px) {
+  /* Center-align welcome message in mobile view */
+  .welcome {
+    text-align: center;
+  }
+
+  /* Stack header elements for mobile */
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Hide upload buttons on smaller screens */
+  .upload-buttons {
+    display: none;
+  }
+
+  /* Show mobile menu icon */
+  .mobile-menu-icon {
+    display: block;
+  }
+
+  /* File cards: reduce padding for compact layout */
+  .file-card {
+    padding: 5px;
+  }
+
+  /* Additional styles for the greeting */
+  .greeting {
+    margin-top: 5px;
+    margin-bottom: 0px;
+    color: yellow;
+  }
+
+  /* App name styling: small and lightweight font */
+  .appName {
+    font-size: 5px;
+    font-weight: 100;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+}

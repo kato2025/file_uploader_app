@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Metdata, title, css etc -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/dashboard.css">
+  <title>Dashboard</title>
+</head>
+<!-- Display folders -->
+<body>
+  <!-- Nav bar -->
+  <header>
+    <!--Display app name-->
+    <div class="welcome">
+      <div><img class="app-icon" src="/namuenetecLogo.png" alt=""></div>
+      <h3 class="appName" style="color: #FFF; font-size: 25px;">NamueneCloud</h3>
+    </div>
+    <!--Display action buttons-->
+    <div class="upload-buttons">
+      <a href="/createFolder">Create Folder</a>
+      <a href="/uploadFile">Upload File</a>
+      <a href="/logout">Logout</a>
+    </div>
+    <!--Display loged in user-->
+    <h3 class="greeting" style="font-weight: 100; font-size:18px; color: yellow;";>Welcome, <%= user.email.split('@')[0].charAt(0).toUpperCase() + user.email.split('@')[0].slice(1) %>!</h3>
+    <div class="mobile-menu-icon" onclick="toggleMobileMenu()">☰</div>
+  </header>
+  <!--Display folders-->
+  <h2 style="margin-top: 7px;">Folders</h2>
+  <% if (folders.length > 0) { %>
+    <div class="folder-grid">
+      <% folders.forEach(folder => { %>
+        <div class="folder">
+          <div class="folder-content">
+            <a href="/folder/<%= folder.id %>""><img src="/foldericon.png" alt="Folder Icon" class="folder-icon"></a>
+            <a style="font-weight: 100; font-size: 16px;" href="/folder/<%= folder.id %>"><%= folder.name %></a>
+          </div>
+          <div class="folder-actions">
+            <a class="edit-folder-btn" data-folder-id="<%= folder.id %>" data-folder-name="<%= folder.name %>" href="#">✏️</a>
+            <a class="delete-folder-btn" data-folder-id="<%= folder.id %>" href="#">🗑</a>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <p style="text-align: center;">You have not created any folders yet.</p>
+  <% } %>
+
+  <!-- Edit Folder Modal -->
+  <!-- Place the Edit Folder Modal -->
+  <div id="editFolderModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">Edit Folder</div>
+      <form id="editFolderForm" action="/edit-folder" method="POST">
+        <input type="hidden" name="folderId" id="editFolderId">
+        <label for="folderName">Folder Name:</label>
+        <input type="text" name="folderName" id="editFolderName" required>
+        <div class="modal-buttons">
+          <button type="submit" class="save-btn">Save Changes</button>
+          <button type="button" class="cancel-btn" id="closeEditFolderModal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <!--Popup Modal JavaScript for Edit Folder -->
+  <script>
+    const editFolderBtns = document.querySelectorAll('.edit-folder-btn');
+    const editFolderModal = document.getElementById('editFolderModal');
+    const editFolderIdInput = document.getElementById('editFolderId');
+    const editFolderNameInput = document.getElementById('editFolderName');
+    const closeEditFolderModal = document.getElementById('closeEditFolderModal');
+
+    editFolderBtns.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent default link action
+        editFolderIdInput.value = btn.dataset.folderId;
+        editFolderNameInput.value = btn.dataset.folderName;
+        editFolderModal.style.display = 'block'; // Show the modal
+      });
+    });
+
+    closeEditFolderModal.addEventListener('click', () => {
+      editFolderModal.style.display = 'none'; // Hide the modal
+    });
+
+    // Close the modal when clicking outside of it
+    window.addEventListener('click', (e) => {
+      if (e.target === editFolderModal) {
+        editFolderModal.style.display = 'none';
+      }
+    });
+  </script>
+
+<!--Delete Folder Confirmation-->
+<script>
+  const deleteFolderBtns = document.querySelectorAll('.delete-folder-btn');
+
+  deleteFolderBtns.forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const folderId = btn.dataset.folderId;
+
+      // Show confirmation alert
+      const confirmDelete = confirm('Are you sure you want to delete this folder? This action cannot be undone.');
+
+      if (confirmDelete) {
+        try {
+          // Check if folder contains files before proceeding
+          const response = await fetch(`/check-folder/${folderId}`);
+          const data = await response.json();
+
+          if (data.hasFiles) {
+            alert('This folder cannot be deleted because it contains files. Please remove the files first and try again.');
+          } else {
+            // If no files, proceed with deletion
+            const deleteResponse = await fetch('/delete-folder', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ folderId }),
+            });
+
+            if (deleteResponse.ok) {
+              alert('Folder deleted successfully.');
+              location.reload(); // Reload page to reflect changes
+            } else {
+              alert('Error deleting folder.');
+            }
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          alert('An error occurred. Please try again.');
+        }
+      }
+    });
+  });
+</script>
+
+  <!-- Mobile Menu Dropdown -->
+  <div id="mobileMenu" class="mobile-menu">
+    <a href="/createFolder" class="button">Create Folder</a>
+    <a href="/uploadFile" class="button">Upload File</a>
+    <a href="/logout" class="button logout">Logout</a>
+  </div>
+
+  <div id="popupContainer"></div>
+
+  <script>
+    // Function to toggle the mobile menu visibility
+    function toggleMobileMenu() {
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (mobileMenu.style.display === 'block') {
+        mobileMenu.style.transform = 'translateY(100%)';
+        setTimeout(() => {
+          mobileMenu.style.display = 'none';
+        }, 300);
+      } else {
+        mobileMenu.style.display = 'block';
+        setTimeout(() => {
+          mobileMenu.style.transform = 'translateY(0)';
+        }, 10);
+      }
+    }
+
+    // Function to dynamically load popup templates to create folder
+    async function showPopup(template) {
+      const popupContainer = document.getElementById('popupContainer');
+      const response = await fetch(`/${template}`);
+      const popupContent = await response.text();
+      popupContainer.innerHTML = `
+        <div class="popup">
+          <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            ${popupContent}
+          </div>
+        </div>
+      `;
+      document.querySelector('.popup').style.display = 'block';
+    }
+
+    // Function to close the popup
+    function closePopup() {
+      const popupContainer = document.getElementById('popupContainer');
+      popupContainer.innerHTML = '';
+    }
+    // Function to confirm file deletion
+    function confirmDelete() {
+      return confirm("Are you sure you want to delete this file? This action cannot be undone.");
+    }
+  </script>
+  <br><br><br><br>
+  <footer>
+    <p style="margin-bottom: -10px;"><span style="font-weight: bold;">Developed by: </span> Dr. Kato Samuel Namuene</p>
+    <p><span style="font-weight: bold;">Email: </span>kato.namuene@ubuea.cm</p>
+  </footer>
+</body>
+</html>

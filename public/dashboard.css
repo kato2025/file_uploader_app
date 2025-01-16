@@ -1,0 +1,324 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif; /* Set default font to Arial, fallback to sans-serif */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  background-color: #f4f7fc; /* Set background color to a light blue-gray */
+  color: #333; /* Set default text color to dark gray */
+}
+
+header {
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Space out child elements */
+  align-items: center; /* Vertically center the items */
+  padding: 10px 20px; /* Add padding around the header */
+  background-color: #333; /* Dark background for header */
+  color: white; /* White text color */
+  position: relative; /* Ensure position is relative for mobile menu toggle */
+}
+
+.app-icon {
+  width: 95px; /* Set width of the app icon */
+  height: 60px; /* Set height of the app icon */
+  margin-top: -7px; /* Adjust position slightly upwards */
+  margin-bottom: -17px; /* Adjust position slightly downwards */
+}
+
+.welcome {
+  display: flex; /* Use flexbox layout for welcome section */
+  align-items: center; /* Vertically center the welcome items */
+  flex-direction: column; /* Stack items vertically */
+  gap: 5px; /* Space between items */
+}
+
+.welcome h3 {
+  margin: 0; /* Remove margin */
+  font-size: 1.2em; /* Set font size */
+}
+
+.upload-buttons {
+  display: flex; /* Use flexbox layout for buttons */
+  justify-content: center; /* Center the buttons */
+  align-items: center; /* Vertically align buttons */
+  gap: 25px; /* Space out buttons */
+}
+
+.upload-buttons a {
+  text-decoration: none; /* Remove underline from links */
+  font-size: 20px; /* Set font size */
+  text-align: center; /* Center text inside links */
+  color: #FFF; /* White text color */
+}
+
+.upload-buttons a:hover {
+  color: yellow; /* Change color to yellow on hover */
+}
+
+.mobile-menu-icon {
+  display: none; /* Hide the mobile menu icon by default */
+  font-size: 2em; /* Set icon size */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  position: absolute; /* Position the icon absolutely */
+  top: 10px; /* Position 10px from the top */
+  right: 20px; /* Position 20px from the right */
+}
+
+h2 {
+  margin: 20px 20px 10px; /* Add margin around the heading */
+  text-align: center; /* Center the heading */
+  color: #007bff; /* Set text color to blue */
+}
+
+.folder-grid {
+  display: grid; /* Use grid layout */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Auto-layout with dynamic columns */
+  gap: 15px; /* Space between grid items */
+  padding: 0 20px; /* Add padding on the sides */
+}
+
+.folder {
+  background-color: #fff; /* White background for folder */
+  padding: 15px; /* Add padding inside folder */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  text-align: left; /* Align text to the left */
+  display: flex; /* Use flexbox layout for folder content */
+  align-items: center; /* Vertically align folder content */
+  justify-content: space-between; /* Space out content */
+}
+
+.folder .folder-content {
+  display: flex; /* Use flexbox layout for content inside the folder */
+  align-items: center; /* Vertically align content */
+}
+
+.folder .folder-icon {
+  width: 50px; /* Set width of the folder icon */
+  height: 45px; /* Set height of the folder icon */
+  margin-right: 10px; /* Add space between icon and content */
+}
+
+.folder a {
+  text-decoration: none; /* Remove underline from links */
+  color: #007bff; /* Set link color to blue */
+  font-weight: 100; /* Set font weight */
+  font-size: 1.1em; /* Set font size */
+  padding: 0; /* Remove padding */
+}
+
+.folder a:hover {
+  color: #0056b3; /* Change link color on hover */
+}
+
+.folder .folder-actions {
+  display: flex; /* Use flexbox layout for actions */
+  justify-content: center; /* Center the actions */
+  align-items: center; /* Vertically align actions */
+  gap: 15px; /* Space between actions */
+  margin-left: auto; /* Push the actions to the right */
+}
+
+.folder .folder-actions a {
+  text-decoration: none; /* Remove underline from actions */
+  color: #dc3545; /* Set action link color to red */
+  font-weight: normal; /* Set normal font weight */
+}
+
+.folder .folder-actions a:hover {
+  color: #b52a35; /* Change action link color on hover */
+}
+
+/* Popup Modal Styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed position to stay on the screen */
+  z-index: 1000; /* On top of everything */
+  left: 0; /* Align to the left */
+  top: 0; /* Align to the top */
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Allow scrolling if necessary */
+  background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+}
+
+.modal-content {
+  background-color: #fff; /* White background for modal */
+  margin: 10% auto; /* Center modal vertically and horizontally */
+  padding: 20px; /* Add padding inside modal */
+  border-radius: 10px; /* Rounded corners */
+  width: 80%; /* Modal width */
+  max-width: 400px; /* Limit max width */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  animation: slideIn 0.3s ease-in-out; /* Animation for modal sliding in */
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-100%); /* Start position above the screen */
+    opacity: 0; /* Start with no opacity */
+  }
+  to {
+    transform: translateY(0); /* Final position in the normal view */
+    opacity: 1; /* Full opacity */
+  }
+}
+
+.modal-header {
+  font-size: 1.5em; /* Set larger font size for modal header */
+  font-weight: bold; /* Bold font weight */
+  color: #007bff; /* Blue color for header text */
+  margin-bottom: 15px; /* Space below header */
+  text-align: center; /* Center the header text */
+}
+
+.modal label {
+  display: block; /* Block-level display for labels */
+  margin-bottom: 10px; /* Add space below the label */
+  font-size: 1em; /* Set font size */
+  font-weight: bold; /* Bold font weight */
+}
+
+.modal input[type="text"] {
+  width: calc(100% - 20px); /* Full width minus padding */
+  padding: 8px 10px; /* Padding for input */
+  margin-bottom: 20px; /* Add space below the input */
+  border: 1px solid #ccc; /* Light border for input */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.modal-buttons {
+  display: flex; /* Use flexbox for modal buttons */
+  justify-content: space-between; /* Space buttons out */
+  gap: 10px; /* Space between buttons */
+}
+
+.modal-buttons button {
+  padding: 10px 15px; /* Padding inside buttons */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+.save-btn {
+  background-color: #007bff; /* Blue background for save button */
+  color: white; /* White text color */
+}
+
+.save-btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.cancel-btn {
+  background-color: #dc3545; /* Red background for cancel button */
+  color: white; /* White text color */
+}
+
+.cancel-btn:hover {
+  background-color: #b52a35; /* Darker red on hover */
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  display: none; /* Hidden by default */
+  background-color: #ffffff; /* White background for mobile menu */
+  position: absolute; /* Absolute positioning */
+  bottom: 0; /* Align to the bottom */
+  left: 0; /* Align to the left */
+  right: 0; /* Align to the right */
+  padding: 10px 20px; /* Add padding */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Shadow on top */
+  text-align: center; /* Center the items */
+  transition: transform 0.3s ease-in-out; /* Smooth transform effect */
+  transform: translateY(100%); /* Initially hidden below the screen */
+}
+
+.mobile-menu a {
+  display: block; /* Block-level links */
+  padding: 10px; /* Padding inside links */
+  text-decoration: none; /* Remove underline */
+  color: #007bff; /* Blue color for links */
+  font-weight: bold; /* Bold font */
+}
+
+.mobile-menu a:hover {
+  color: #0056b3; /* Darker blue on hover */
+}
+
+/* Footer styling */
+footer {
+  text-align: center; /* Centers the footer text */
+  margin-top: -45px; /* Adjusts the top margin */
+  margin-bottom: 30px; /* Adds space at the bottom */
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  /* Navbar */
+  .welcome {
+    text-align: center; /* Center the welcome section */
+  }
+
+  header {
+    flex-direction: column; /* Stack items vertically in the header */
+    align-items: center; /* Center the header content */
+  }
+
+  .upload-buttons {
+    display: none; /* Hide upload buttons on mobile */
+  }
+
+  .mobile-menu-icon {
+    display: block; /* Show mobile menu icon on mobile */
+  }
+
+  /* File grid */
+  .file-grid {
+    grid-template-columns: 1fr; /* Single column on mobile */
+  }
+
+  /* File cards */
+  .file-card {
+    padding: 15px; /* Add padding inside file cards */
+  }
+
+  /* Mobile Menu */
+  .mobile-menu {
+    display: none; /* Hidden by default */
+    background-color: #ffffff; /* White background */
+    position: absolute; /* Absolute positioning */
+    bottom: 0; /* Align to bottom */
+    left: 0; /* Align to left */
+    right: 0; /* Align to right */
+    padding: 10px 20px; /* Padding */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Top shadow */
+    text-align: center; /* Center the menu items */
+    transition: transform 0.3s ease-in-out; /* Smooth transform transition */
+    transform: translateY(100%); /* Initially hidden below the screen */
+  }
+
+  .mobile-menu a {
+    display: block; /* Block-level display for mobile menu links */
+    padding: 10px; /* Padding inside links */
+    text-decoration: none; /* Remove underline */
+    color: #007bff; /* Blue text color */
+    font-weight: bold; /* Bold font */
+  }
+
+  .mobile-menu a:hover {
+    color: #0056b3; /* Darker blue on hover */
+  }
+
+  .greeting {
+    margin-top: 5px; /* Adjust top margin */
+    margin-bottom: 0px; /* Remove bottom margin */
+    color: yellow; /* Set text color to yellow */
+  }
+
+  .appName {
+    font-size: 5px; /* Set font size to 5px */
+    font-weight: 100; /* Set font weight to 100 */
+    font-family: Arial, Helvetica, sans-serif; /* Set font family */
+  }
+}
+

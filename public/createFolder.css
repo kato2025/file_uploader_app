@@ -1,0 +1,76 @@
+/* Popup Styling */
+
+/* The main container for the popup content */
+.popup-content {
+  position: relative; /* Positions the popup relative to its parent container */
+  background-color: #fefefe; /* Sets the background color to a light neutral shade */
+  margin: 10% auto; /* Centers the popup horizontally and vertically */
+  padding: 20px; /* Adds spacing inside the popup */
+  border: 1px solid #888; /* Adds a light border around the popup */
+  border-radius: 10px; /* Rounds the corners of the popup */
+  width: 40%; /* Sets the popup's width to 40% of the viewport width */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow for depth */
+  text-align: center; /* Centers the text inside the popup */
+}
+
+/* Styling for the close button inside the popup */
+.popup-content .close {
+  position: absolute; /* Positions the close button relative to the popup */
+  top: 10px; /* Positions it 10px from the top */
+  right: 15px; /* Positions it 15px from the right */
+  color: #aaa; /* Sets the initial color to a muted gray */
+  font-size: 28px; /* Makes the button text large for visibility */
+  font-weight: bold; /* Ensures the button text stands out */
+  cursor: pointer; /* Changes the cursor to a pointer for better UX */
+}
+
+/* Close button hover and focus effects */
+.popup-content .close:hover,
+.popup-content .close:focus {
+  color: #000; /* Changes the color to black on hover or focus */
+  text-decoration: none; /* Ensures no underline or text decoration appears */
+}
+
+/* Create Folder Form */
+
+/* General form layout and alignment */
+form {
+  display: flex; /* Uses flexbox for alignment */
+  flex-direction: column; /* Stacks elements vertically */
+  gap: 15px; /* Adds space between form elements */
+  align-items: center; /* Centers the form elements horizontally */
+}
+
+/* Inputs and buttons inside the form */
+form input,
+form button {
+  width: 80%; /* Makes input fields and buttons take up 80% of the form's width */
+  padding: 10px; /* Adds internal spacing for better UX */
+  font-size: 16px; /* Ensures text is readable */
+  border-radius: 5px; /* Rounds the edges of the inputs and buttons */
+  border: 1px solid #ccc; /* Adds a subtle border for definition */
+}
+
+/* Submit button styling */
+form button {
+  background-color: #4caf50; /* Sets the button's background color to green */
+  color: white; /* Sets the button text color to white for contrast */
+  border: none; /* Removes the default button border */
+  cursor: pointer; /* Changes the cursor to a pointer on hover */
+}
+
+/* Submit button hover effect */
+form button:hover {
+  background-color: #45a049; /* Slightly darkens the button background on hover */
+}
+
+/* Warning message styling */
+
+/* General styling for warning messages */
+.warning {
+  color: red; /* Highlights warnings in red */
+  font-size: 14px; /* Keeps the font size small but readable */
+  display: none; /* Hides the warning message by default */
+  margin-top: -10px; /* Pulls the warning closer to the related input */
+  margin-bottom: 10px; /* Adds spacing below the warning */
+}

@@ -1,0 +1,143 @@
+/* General body styling */
+body {
+  font-family: Arial, sans-serif; /* Sets a clean, modern font */
+  background-color: #f9f9f9; /* Light background color for the page */
+  display: flex; /* Uses flexbox for centering content */
+  justify-content: center; /* Horizontally centers content */
+  align-items: center; /* Vertically centers content */
+  height: 100vh; /* Makes the body take up the full viewport height */
+  margin: 0; /* Removes default margin */
+  padding: 20px; /* Adds padding for better spacing on small screens */
+}
+
+/* Container for form and logo */
+.container {
+  background-color: #ffffff; /* White background for the form container */
+  padding: 20px; /* Adds padding inside the container */
+  border-radius: 8px; /* Rounds the corners of the container */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for a raised effect */
+  width: 100%; /* Makes the container take up full width */
+  max-width: 400px; /* Limits the container width to 400px */
+}
+
+/* Logo styling */
+.logo {
+  display: block; /* Makes the logo a block element */
+  margin: 0 auto 15px; /* Centers the logo horizontally and adds margin below */
+  width: 100px; /* Sets the logo width */
+  height: auto; /* Maintains the aspect ratio of the logo */
+}
+
+/* Header title styling */
+.header-title {
+  text-align: center; /* Centers the header text */
+  color: green; /* Sets text color to green */
+  margin-bottom: 15px; /* Adds margin below the header */
+  font-size: 1.5rem; /* Sets font size for responsive design */
+}
+
+/* Main heading styling */
+h1 {
+  text-align: center; /* Centers the heading text */
+  color: #333; /* Dark gray color for readability */
+  font-size: 1.75rem; /* Slightly larger font size for main heading */
+  margin-bottom: 15px; /* Adds space below the heading */
+}
+
+/* Error message styling */
+.error-message {
+  color: red; /* Red color for error messages */
+  text-align: center; /* Centers the error message */
+  margin-bottom: 15px; /* Adds space below the error message */
+  font-size: 1rem; /* Adjusts font size for readability */
+}
+
+/* Form layout and styling */
+form {
+  display: flex; /* Uses flexbox for form layout */
+  flex-direction: column; /* Stacks the form elements vertically */
+  gap: 10px; /* Adds consistent spacing between form elements */
+}
+
+/* Label styling */
+label {
+  margin-bottom: 5px; /* Adds space below each label */
+  font-size: 1rem; /* Sets font size for labels */
+  font-weight: bold; /* Makes the label text bold */
+}
+
+/* Input field styling */
+input {
+  padding: 12px; /* Increases padding for touch-friendly inputs */
+  font-size: 1rem; /* Sets font size for input text */
+  border: 1px solid #ccc; /* Adds a light gray border to inputs */
+  border-radius: 4px; /* Rounds the corners of the input fields */
+}
+
+/* Focused input field styling */
+input:focus {
+  border-color: #4CAF50; /* Highlights the border in green when the input is focused */
+  outline: none; /* Removes the default outline */
+  box-shadow: 0 0 3px rgba(76, 175, 80, 0.5); /* Adds a green glow effect when focused */
+}
+
+/* Button styling */
+button {
+  padding: 12px; /* Adds padding inside the button */
+  font-size: 1rem; /* Sets font size for the button text */
+  background-color: #4CAF50; /* Green background color for the button */
+  color: white; /* White text color */
+  border: none; /* Removes the default border */
+  border-radius: 4px; /* Rounds the corners of the button */
+  cursor: pointer; /* Changes the cursor to a pointer on hover */
+  transition: background-color 0.3s; /* Adds smooth background color transition on hover */
+}
+
+/* Button hover effect */
+button:hover {
+  background-color: #45a049; /* Darkens the button background when hovered */
+}
+
+/* Focused button styling */
+button:focus {
+  outline: none; /* Removes default focus outline */
+  box-shadow: 0 0 3px rgba(76, 175, 80, 0.5); /* Adds a glow effect on button focus */
+}
+
+/* Login text and link styling */
+.login {
+  text-align: center; /* Centers the text */
+  margin-top: 15px; /* Adds space above the login link */
+  margin-bottom: -2px; /* Adjusts the space below the login link */
+  font-size: 0.95rem; /* Adjusts font size for the link */
+}
+
+/* Login link styling */
+.login-link {
+  color: #007BFF; /* Sets the color of the link */
+  text-decoration: none; /* Removes the underline from the link */
+}
+
+/* Login link hover effect */
+.login-link:hover {
+  color: #007BFF; /* Ensures color remains the same on hover */
+  text-decoration: underline; /* Underlines the link on hover */
+}
+
+/* Redirect section styling */
+.redirect {
+  display: flex; /* Uses flexbox for layout */
+  justify-content: center; /* Centers the content horizontally */
+  align-items: center; /* Centers the content vertically */
+  flex-direction: column; /* Stacks content vertically */
+}
+
+/* Redirect link styling */
+.redirect a {
+  text-decoration: none; /* Removes underline from the redirect link */
+}
+
+/* Redirect link hover effect */
+.redirect a:hover {
+  text-decoration: underline; /* Underlines the link on hover */
+}

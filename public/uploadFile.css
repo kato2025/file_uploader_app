@@ -1,0 +1,65 @@
+    /* Popup Styling */
+    .popup-content {
+      position: relative; /* Position relative to enable positioning of close button */
+      background-color: #fefefe; /* Light background color for the popup */
+      margin: 10% auto; /* Center the popup vertically with a 10% margin from the top */
+      padding: 20px; /* Add padding inside the popup for content spacing */
+      border: 1px solid #888; /* Light grey border for the popup */
+      border-radius: 10px; /* Rounded corners for a soft look */
+      width: 40%; /* Set the width of the popup */
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Add shadow to give depth to the popup */
+      text-align: center; /* Center text inside the popup */
+    }
+
+    .popup-content .close {
+      position: absolute; /* Position the close button absolutely within the popup */
+      top: 10px; /* Position the close button 10px from the top */
+      right: 15px; /* Position the close button 15px from the right */
+      color: #aaa; /* Light grey color for the close button */
+      font-size: 28px; /* Larger font size for the close button */
+      font-weight: bold; /* Make the close button bold */
+      cursor: pointer; /* Change the cursor to a pointer on hover */
+    }
+
+    .popup-content .close:hover,
+    .popup-content .close:focus {
+      color: #000; /* Change color to black on hover or focus */
+      text-decoration: none; /* Remove text decoration on hover/focus */
+    }
+
+    /* Upload File Form */
+    form {
+      display: flex; /* Use flexbox to arrange form elements */
+      flex-direction: column; /* Stack form elements vertically */
+      gap: 15px; /* Space between each form element */
+      align-items: center; /* Center form elements horizontally */
+    }
+
+    form select,
+    form input,
+    form button {
+      width: 80%; /* Set width of the form elements to 80% of the parent container */
+      padding: 10px; /* Add padding for spacing inside the form elements */
+      font-size: 16px; /* Set the font size for the form elements */
+      border-radius: 5px; /* Rounded corners for the form elements */
+      border: 1px solid #ccc; /* Light border around form elements */
+    }
+
+    form button {
+      background-color: #008cba; /* Blue background for the button */
+      color: white; /* White text color for the button */
+      border: none; /* Remove the default border of the button */
+      cursor: pointer; /* Change cursor to pointer on hover */
+    }
+
+    form button:hover {
+      background-color: #005f87; /* Darker blue on hover */
+    }
+
+    .warning {
+      color: red; /* Red color for the warning text */
+      font-size: 14px; /* Set the font size for the warning */
+      display: none; /* Initially hide the warning text */
+      margin-top: -10px; /* Negative margin to bring the warning text closer to the form */
+      margin-bottom: 10px; /* Add space below the warning text */
+    }

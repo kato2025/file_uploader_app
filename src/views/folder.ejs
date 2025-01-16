@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- The <head> element contains metadata and other information about the document -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/folder.css">
+  <title>Folder - <%= folder.name %></title>
+</head>
+<!-- The <body> element contains the contents of the document -->
+<body>
+  <!-- Nav bar -->
+  <header>
+    <div class="welcome">
+      <div><img class="app-icon" src="/namuenetecLogo.png" alt=""></div>
+      <h3 class="appName" style="color: #FFF; font-size: 25px;">NamueneCloud</h3>
+    </div>
+    <!--Action buttons-->
+    <div class="upload-buttons">
+      <a href="/createFolder">Create Folder</a>
+      <a href="/uploadFile">Upload File</a>
+      <a href="/dashboard">Back to Dashboard</a>
+      <a href="/logout">Logout</a>
+    </div>
+    <!--Greeting message-->
+    <h3 class="greeting" style="font-weight: 100; font-size:18px; color: yellow;">Welcome, <%= user.email.split('@')[0].charAt(0).toUpperCase() + user.email.split('@')[0].slice(1) %>!</h3>
+    <div class="mobile-menu-icon" onclick="toggleMobileMenu()">☰</div>
+  </header>
+  <!--Upload folder name from database-->
+  <h2 style="margin-top: 10px; margin-bottom: 5px; font-weight: 300;"><%= folder.name %></h2>
+  <!--Display files in the folder-->
+  <% if (files.length > 0) { %>
+    <div class="file-grid">
+      <% files.forEach(file => { %>
+        <div class="file-card">
+          <div class="file-thumbnail">
+            📄
+          </div>
+          <div class="file-info">
+            <p class="file-name"><%= file.name %></p>
+            <p class="file-size"><%= (file.size / 1024).toFixed(2) %> KB</p>
+          </div>
+          <div class="file-actions">
+            <a href="/download/<%= file.path %>">📥</a>
+            <form action="/delete-file/<%= file.id %>" method="POST" onsubmit="confirmDelete()" style="display:inline;">
+              <button type="submit">🗑</button>
+            </form>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <p style="text-align: center;">No files in this folder yet.</p>
+  <% } %>
+
+  <!-- Mobile Menu Dropdown -->
+  <div id="mobileMenu" class="mobile-menu">
+    <a href="/createFolder" class="button">Create Folder</a>
+    <a href="/uploadFile" class="button">Upload File</a>
+    <a href="/dashboard" class="button">Back to Dashboard</a>
+    <a href="/logout" class="button logout">Logout</a>
+  </div>
+
+  <script>
+    // Function to toggle the mobile menu visibility
+    function toggleMobileMenu() {
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (mobileMenu.style.display === 'block') {
+        mobileMenu.style.transform = 'translateY(100%)';
+        setTimeout(() => {
+          mobileMenu.style.display = 'none';
+        }, 300);
+      } else {
+        mobileMenu.style.display = 'block';
+        setTimeout(() => {
+          mobileMenu.style.transform = 'translateY(0)';
+        }, 10);
+      }
+    }
+
+    // Function to confirm deletion of file
+    function confirmDelete() {
+      return confirm("Are you sure you want to delete this file? This action cannot be undone.");
+    }
+  </script>
+  <br><br><br><br>
+  <footer>
+    <p style="margin-bottom: -10px;"><span style="font-weight: bold;">Developed by: </span> Dr. Kato Samuel Namuene</p>
+    <p><span style="font-weight: bold;">Email: </span>kato.namuene@ubuea.cm</p>
+  </footer>
+</body>
+</html>

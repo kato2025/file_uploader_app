@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--Metadata, title, css etc-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/login.css">
+    <title>Login</title>
+    
+</head>
+<!--Login form-->
+<body>
+    <div class="container">
+        <img class="logo" src="namuenetecLogo.png" alt="NamueneTec logo">
+        <h2 class="header-title">NamueneCloud</h2>
+        <h1>Login</h1>
+        <!--Error message-->
+        <% if (error) { %>
+            <p class="error-message"><%= error %></p>
+        <% } %>
+        <form action="/login" method="POST">
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <div class="redirect">
+            <p class="register-link">Don't have an account? <a href="/register">Register here</a>.</p>
+            <p>Baco to <a class="homePage" style="text-decoration: none; color: #007BFF;" href="/">Home</a> page</p>
+        </div>
+    </div>
+</body>
+</html>

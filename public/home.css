@@ -1,0 +1,161 @@
+/* General styles for body */
+body {
+  margin: 0; /* Removes the default margin from the body */
+  font-family: Arial, sans-serif; /* Sets the font to Arial for a clean, modern look */
+  line-height: 1.6; /* Increases line height for better readability */
+}
+
+/* Header styling */
+header {
+  display: flex; /* Makes the header a flex container to align items horizontally */
+  align-items: center; /* Vertically aligns items in the center */
+  justify-content: space-between; /* Distributes space between items */
+  gap: 15px; /* Adds space between items */
+  flex-wrap: wrap; /* Allows wrapping of items if necessary */
+  margin-bottom: -25px; /* Adjusts the space below the header */
+  padding: 10px 20px; /* Adds padding inside the header */
+  background-color: #333; /* Dark background color for the header */
+  color: #FFF; /* White text color for readability */
+}
+
+/* Styling for links inside the header */
+header a {
+  color: #FFF; /* Makes the link text white */
+  text-decoration: none; /* Removes the default underline from links */
+  background-color: #007bff; /* Blue background for the links */
+  padding: 10px 20px; /* Adds padding inside the link for better click area */
+  border-radius: 5px; /* Rounds the corners of the link */
+  font-size: 16px; /* Sets the font size for the links */
+  transition: background-color 0.3s ease; /* Adds smooth background-color transition on hover */
+}
+
+/* Styling for the header links when hovered */
+header a:hover {
+  background-color: #0056b3; /* Changes background to a darker blue on hover */
+}
+
+/* Welcome section styles */
+.welcome {
+  display: flex; /* Makes it a flex container */
+  align-items: center; /* Aligns items vertically */
+  flex-direction: column; /* Stacks items vertically */
+  gap: 5px; /* Adds space between elements */
+}
+
+/* Styling for the header of the welcome section */
+.welcome h3 {
+  margin: 0; /* Removes default margin */
+  font-size: 1.2em; /* Increases font size slightly */
+}
+
+/* App icon styling */
+.app-icon {
+  width: 140px; /* Sets width of the app icon */
+  height: 80px; /* Sets height of the app icon */
+  margin-top: -7px; /* Adjusts the top margin */
+  margin-bottom: -21px; /* Adjusts the bottom margin */
+}
+
+/* Header title styles */
+.header-title {
+  order: 0; /* Ensures this element appears first in the header */
+}
+
+/* Main content styling */
+main {
+  display: flex; /* Makes the main content a flex container */
+  align-items: center; /* Aligns items vertically */
+  justify-content: center; /* Centers the items horizontally */
+  padding: 40px; /* Adds padding around the content */
+  flex-wrap: wrap; /* Allows items to wrap if needed */
+}
+
+/* Image placeholder styling */
+main .image-placeholder {
+  display: flex; /* Uses flexbox for centering the image placeholder */
+  align-items: center; /* Vertically centers the placeholder */
+  justify-content: center; /* Horizontally centers the placeholder */
+  flex: 1; /* Takes up the remaining space */
+  width: 100%; /* Makes sure it spans full width */
+  height: 300px; /* Sets a fixed height for the image placeholder */
+  margin-right: 20px; /* Adds space to the right of the placeholder */
+  margin-top: 35px; /* Adds space on top */
+}
+
+/* Text content styling */
+main .text-content {
+  flex: 2; /* Allows the text content to take up more space */
+  width: 100%; /* Ensures text content spans full width */
+}
+
+/* Heading styles inside the text content */
+main .text-content h2 {
+  font-size: 28px; /* Larger font size for headings */
+  color: #333; /* Dark color for headings */
+  margin-bottom: 10px; /* Adds space below the heading */
+}
+
+/* Paragraph styles inside the text content */
+main .text-content p {
+  font-size: 18px; /* Sets a comfortable font size for paragraphs */
+  line-height: 1.6; /* Increases line height for better readability */
+  color: #555; /* Slightly lighter color for text */
+  margin-bottom: 20px; /* Adds space below paragraphs */
+}
+
+/* Unordered list inside text content */
+main .text-content ul {
+  font-size: 16px; /* Sets font size for the list */
+  color: #555; /* List text color */
+  margin-top: 20px; /* Adds space above the list */
+  line-height: 1.8; /* Increases line height for readability */
+  padding-left: 20px; /* Adds padding on the left for list bullets */
+}
+
+/* List items inside the unordered list */
+main .text-content ul li {
+  margin-bottom: 10px; /* Adds space below each list item */
+}
+
+/* Footer styling */
+footer {
+  text-align: center; /* Centers the footer text */
+  margin-top: -45px; /* Adjusts the top margin */
+  margin-bottom: 30px; /* Adds space at the bottom */
+}
+
+/* Responsive Design for smaller screens (max-width: 768px) */
+@media (max-width: 768px) {
+  /* Reorder elements for mobile screens */
+  header {
+    flex-direction: column; /* Stacks header items vertically */
+  }
+  .header-title {
+    text-align: center; /* Centers the header title */
+    margin-top: -7px; /* Adjusts the top margin */
+    margin-bottom: -7px; /* Adjusts the bottom margin */
+  }
+  .start {
+    margin-bottom: 5px; /* Adds space below the start link */
+  }
+  main {
+    flex-direction: column; /* Stacks main content vertically */
+    align-items: flex-start; /* Aligns content to the left */
+  }
+
+  /* Hides the image placeholder on small screens */
+  main .image-placeholder {
+    display: none;
+  }
+
+  /* Adjusts text content styling for mobile */
+  main .text-content {
+    width: 100%; /* Makes sure text content spans full width */
+    margin-bottom: 20px; /* Adds space below text content */
+  }
+
+  /* Centers headings on mobile */
+  h2 {
+    text-align: center; /* Centers the heading */
+  }
+}
