@@ -62,6 +62,10 @@ header {
 .upload-buttons a:hover {
   color: yellow; /* Changes color for emphasis on hover */
 }
+ /* Hide mobile Menu */
+.mobile-menu {
+  visibility: hidden;
+}
 
 /* Mobile menu icon: initially hidden, shown only on smaller screens */
 .mobile-menu-icon {
@@ -164,36 +168,6 @@ h1, h2, h3 {
   cursor: pointer;
 }
 
-/* Mobile Menu */
-/* Hidden by default, visible on smaller screens */
-.mobile-menu {
-  display: none;
-  background-color: #ffffff;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 10px 20px;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  transition: transform 0.3s ease-in-out; /* Smooth slide-in effect */
-  transform: translateY(100%); /* Hidden by default */
-}
-
-/* Mobile menu links */
-.mobile-menu a {
-  display: block;
-  padding: 10px;
-  text-decoration: none;
-  color: #007bff;
-  font-weight: bold;
-}
-
-/* Hover effect for mobile menu links */
-.mobile-menu a:hover {
-  color: #0056b3; /* Darker blue for emphasis */
-}
-
 /* Footer styling */
 footer {
   text-align: center; /* Centers the footer text */
@@ -218,6 +192,34 @@ footer {
   /* Hide upload buttons on smaller screens */
   .upload-buttons {
     display: none;
+  }
+
+/* Mobile Menu */
+/* Hidden by default, visible on smaller screens */
+  .mobile-menu {
+    display: none; /* Hidden by default */
+    background-color: #ffffff; /* White background */
+    position: absolute; /* Absolute positioning */
+    bottom: 0; /* Align to bottom */
+    left: 0; /* Align to left */
+    right: 0; /* Align to right */
+    padding: 10px 20px; /* Padding */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Top shadow */
+    text-align: center; /* Center the menu items */
+    transition: transform 0.3s ease-in-out; /* Smooth transform transition */
+    transform: translateY(100%); /* Initially hidden below the screen */
+  }
+
+  .mobile-menu a {
+    display: block; /* Block-level display for mobile menu links */
+    padding: 10px; /* Padding inside links */
+    text-decoration: none; /* Remove underline */
+    color: #007bff; /* Blue text color */
+    font-weight: bold; /* Bold font */
+  }
+
+  .mobile-menu a:hover {
+    color: #0056b3; /* Darker blue on hover */
   }
 
   /* Show mobile menu icon */
